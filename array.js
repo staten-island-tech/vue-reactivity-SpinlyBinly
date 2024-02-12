@@ -4,4 +4,6 @@ const food = [
     Cost: "$100,000",
     Category: "Fruit",
   },
+  {},
+  {},
 ];
