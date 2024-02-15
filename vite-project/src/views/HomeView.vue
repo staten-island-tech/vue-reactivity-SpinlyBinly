@@ -81,20 +81,17 @@ const supermarket = [
     cost: 4.49,
     category: "Frozen Foods",
   },
+  {
+    name: "",
+    cost: "",
+    category: "",
+  },
 ];
-
-function makeCard() {
-  DOMSelectors.container.insertAdjacentHTML(
-    "beforeend",
-    `<div class=card>
-    <h2>Food: ${name.value} </h2>
-    <h2> Book Author: ${cost.value} </h2>  
-    <img src="${category.value}" alt="">
-   // <button class="button">REMOVE ME</button></div>`
-  );
-}
-makeCard();
-
 </script>
-:root{ }
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+body {
+}
+.container {
+}
+</style>
