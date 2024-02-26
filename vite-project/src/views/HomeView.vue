@@ -3,9 +3,18 @@
   :key="destination.name"
  -->
 
-<template>
-  <div class="container"></div>
-</template>
+ <script setup>
+ import { ref } from 'vue'
+ 
+ const counter = ref({ count: 0 })
+ const message = ref('Hello World!')
+ </script>
+ 
+ <template>
+   <h1>{{ message }}</h1>
+   <p>Count is: {{ counter.count }}</p>
+ </template>
+
 
 <script>
 export default {};
