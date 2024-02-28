@@ -1,9 +1,13 @@
-<!-- <DestCard
-  v-for="destination in destinations"
-  :key="destination.name"
- -->
-  import { ref } from 'vue'
-export const food = ref([
+<template>
+  <div class="card" v-for="product in supermarket">
+    <h1>{{ product.name }}</h1>
+    <h1>{{ product.cost }}</h1>
+    <h1>{{ product.category }}</h1>
+  </div>
+</template>
+
+<script setup>
+const supermarket = [
   {
     name: "Apples",
     cost: 1.99,
@@ -80,4 +84,10 @@ export const food = ref([
     cost: "",
     category: "",
   },
-]);
+];
+</script>
+
+<style scoped>
+.card {
+}
+</style>
