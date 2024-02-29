@@ -1,12 +1,26 @@
 <template>
-  <div class="card" v-for="product in supermarket">
-    <h1>{{ product.name }}</h1>
-    <h1>{{ product.cost }}</h1>
-    <h1>{{ product.category }}</h1>
+  <div class="container">
+    <div class="card" v-for="product in supermarket">
+      <h3>{{ product.name }}</h3>
+      <h3>{{ product.cost }}</h3>
+      <h3>{{ product.category }}</h3>
+      <button @click="add(product)">Add to Cart!</button>
+    </div>
+  </div>
+  <div class="cart">
+    <div class="cartItems" v-for="item in cart">
+      <h3>{{ item.name }}</h3>
+      <h3>{{ item.cost }}</h3>
+      <h3>{{ item.category }}</h3>
+      <h3>{{ item.amount }}</h3>
+      <button @click="remove(item)">Remove From Cart</button>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { reactive } from "vue";
+const cart = reactive([]);
 const supermarket = [
   {
     name: "Apples",
@@ -79,15 +93,37 @@ const supermarket = [
     cost: 4.49,
     category: "Frozen Foods",
   },
-  {
-    name: "",
-    cost: "",
-    category: "",
-  },
 ];
+function add(food) {
+  if (!cart.includes(food)) {
+    cart.push(food);
+    food.amount = 1;
+  } else {
+    food.amount += 1;
+  }
+}
+function remove(item) {
+  const index = cart.indexOf(item);
+  cart.splice(index);
+}
 </script>
 
 <style scoped>
 .card {
+  width: 22%;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cart {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
 }
 </style>
