@@ -14,7 +14,6 @@
       <h3>{{ item.name }}</h3>
       <h3>{{ item.cost }}</h3>
       <h3>{{ item.category }}</h3>
-      <h3>{{ item.amount }}</h3>
       <button class="buttons" @click="remove(item)">Remove From Cart</button>
     </div>
     </div>
@@ -98,14 +97,14 @@ const supermarket = [
 function add(food) {
   if (!cart.includes(food)) {
     cart.push(food);
-    food.amount = 1;
+    food.amount = 0;
   } else {
-    food.amount += 0;
-  }
+    const index = cart.indexOf(food);
+    cart[index].amount+=1;  }
 }
 function remove(item) {
   const index = cart.indexOf(item);
-  cart.splice(index);
+  cart.splice(index, 1);
 }
 </script>
 
